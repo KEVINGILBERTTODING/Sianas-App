@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logo_jateng"
+        android:layout_margin="78dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/container_login"
+        android:layout_alignParentBottom="true"
+        android:layout_height="@dimen/_280sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="@dimen/_14sdp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textColor="@color/black"
+                android:fontFamily="@font/popmed"
+                android:textSize="@dimen/_18ssp"/>
+
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:textSize="@dimen/_11ssp"
+                android:fontFamily="@font/popmed"
+                android:background="@drawable/container_edittext"
+                android:hint="Username"/>
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_11ssp"
+                android:inputType="textPassword"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/container_edittext"
+                android:padding="@dimen/_10sdp"
+                android:fontFamily="@font/popmed"
+                android:hint="Password"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/popsem"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Login"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
