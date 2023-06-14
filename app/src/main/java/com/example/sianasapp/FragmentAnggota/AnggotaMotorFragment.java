@@ -1,66 +1,114 @@
 package com.example.sianasapp.FragmentAnggota;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.example.sianasapp.Model.MobilModel;
+import com.example.sianasapp.Model.MotorModel;
 import com.example.sianasapp.R;
+import com.example.sianasapp.Util.AnggotaIService;
+import com.example.sianasapp.Util.DataApi;
+import com.example.sianasapp.adapter.anggota.AnggotaMobilAdapter;
+import com.example.sianasapp.adapter.anggota.AnggotaMotorAdapter;
+import com.example.sianasapp.databinding.FragmentAnggotaMotorBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AnggotaMotorFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.List;
+
+import es.dmoral.toasty.Toasty;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AnggotaMotorFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentAnggotaMotorBinding binding;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public AnggotaMotorFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AnggotaMotorFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AnggotaMotorFragment newInstance(String param1, String param2) {
-        AnggotaMotorFragment fragment = new AnggotaMotorFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    LinearLayoutManager linearLayoutManager;
+    List<MotorModel> motorModelList;
+    AlertDialog progressDialog;
+    private AnggotaMotorAdapter anggotaMotorAdapter;
+    AnggotaIService anggotaIService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_anggota_motor, container, false);
+        binding = FragmentAnggotaMotorBinding.inflate(inflater, container, false);
+        anggotaIService = DataApi.getClient().create(AnggotaIService.class);
+
+
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getMotor();
+
+    }
+
+    private void getMotor() {
+        showProgressBar("Loading", "Memuat data...", true);
+        anggotaIService.getMotor().enqueue(new Callback<List<MotorModel>>() {
+            @Override
+            public void onResponse(Call<List<MotorModel>> call, Response<List<MotorModel>> response) {
+                if (response.isSuccessful() && response.body().size() > 0) {
+                    motorModelList = response.body();
+                    anggotaMotorAdapter = new AnggotaMotorAdapter(getContext(), motorModelList);
+                    linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                    binding.rvMotor.setLayoutManager(linearLayoutManager);
+                    binding.rvMotor.setAdapter(anggotaMotorAdapter);
+                    binding.rvMotor.setHasFixedSize(true);
+                    showProgressBar("dsd", "sd",false);
+                }else {
+                    showProgressBar("Sds", "dss", false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MotorModel>> call, Throwable t) {
+                showProgressBar("Sds", "dss", false);
+                showToast("error", "Tidak ada koneksi internet");
+
+
+            }
+        });
+
+    }
+
+    private void showProgressBar(String title, String message, boolean isLoading) {
+        if (isLoading) {
+            // Membuat progress dialog baru jika belum ada
+            if (progressDialog == null) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle(title);
+                builder.setMessage(message);
+                builder.setCancelable(false);
+                progressDialog = builder.create();
+            }
+            progressDialog.show(); // Menampilkan progress dialog
+        } else {
+            // Menyembunyikan progress dialog jika ada
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+        }
+    }
+    private void showToast(String jenis, String text) {
+        if (jenis.equals("success")) {
+            Toasty.success(getContext(), text, Toasty.LENGTH_SHORT).show();
+        }else {
+            Toasty.error(getContext(), text, Toasty.LENGTH_SHORT).show();
+        }
     }
 }

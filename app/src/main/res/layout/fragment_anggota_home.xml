@@ -93,6 +93,7 @@
                     android:layout_height="130dp"
                     android:background="@color/black"
                     app:cardCornerRadius="15dp"
+                    android:id="@+id/cvMenuMotor"
                     app:cardElevation="10dp"
                     app:cardUseCompatPadding="true">
 
@@ -110,7 +111,7 @@
                             android:fontFamily="@font/popsem"/>
 
                         <TextView
-                            android:id="@+id/tv6"
+                            android:id="@+id/tvTotalMotor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv5"
