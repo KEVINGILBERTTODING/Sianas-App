@@ -1,5 +1,6 @@
 package com.example.sianasapp.Util;
 
+import com.example.sianasapp.Model.AnggotaModel;
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.MotorModel;
 import com.example.sianasapp.Model.ResponseModel;
@@ -48,6 +49,24 @@ public interface AnggotaIService {
             @PartMap Map<String, RequestBody> textData,
             @Part MultipartBody.Part file
             );
+
+    @GET("anggotaapi/getMyProfile")
+    Call<AnggotaModel> getMyProfile(
+            @Query("id") String id
+    );
+
+    @FormUrlEncoded
+    @POST("anggotaapi/updateProfile")
+    Call<ResponseModel> updateProfile(
+            @Field("subbag") String subbag,
+            @Field("nama") String nama,
+            @Field("nip") String nip,
+            @Field("jabatan") String jabatan,
+            @Field("no_hp") String no_hp,
+            @Field("username") String username,
+            @Field("password") String password,
+            @Field("id") String id
+    );
 
 
 }
