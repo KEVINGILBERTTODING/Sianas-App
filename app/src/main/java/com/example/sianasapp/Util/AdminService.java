@@ -32,4 +32,19 @@ public interface AdminService {
             @Field("status") String status
 
     );
+
+    @FormUrlEncoded
+    @POST("admin/updatemotor")
+    Call<ResponseModel> updateMotor(
+            @Field("id") String id,
+            @Field("jenis_motor") String jenis_motor,
+            @Field("no_plat") String no_plat,
+            @Field("tgl_pjk") String tgl_pjk
+    );
+
+    @FormUrlEncoded
+    @POST("admin/deleteMotor")
+    Call<ResponseModel> deleteMotor(
+            @Field("id") String id
+    );
 }

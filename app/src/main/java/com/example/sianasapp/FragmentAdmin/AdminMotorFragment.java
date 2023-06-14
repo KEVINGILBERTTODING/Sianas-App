@@ -2,21 +2,21 @@ package com.example.sianasapp.FragmentAdmin;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sianasapp.Model.MobilModel;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.sianasapp.Model.MotorModel;
-import com.example.sianasapp.R;
 import com.example.sianasapp.Util.AnggotaIService;
 import com.example.sianasapp.Util.DataApi;
-import com.example.sianasapp.databinding.FragmentAdminHomeBinding;
+import com.example.sianasapp.adapter.admin.AdminMotorAdapter;
+import com.example.sianasapp.adapter.anggota.AnggotaMotorAdapter;
+import com.example.sianasapp.databinding.FragmentAnggotaMotorBinding;
 
 import java.util.List;
 
@@ -25,22 +25,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FragmentAdminHome extends Fragment {
-    private FragmentAdminHomeBinding binding;
+public class AdminMotorFragment extends Fragment {
+
+    private FragmentAnggotaMotorBinding binding;
+
+    LinearLayoutManager linearLayoutManager;
+    List<MotorModel> motorModelList;
+    AlertDialog progressDialog;
+    private AdminMotorAdapter adminMotorAdapter;
     AnggotaIService anggotaIService;
-    private AlertDialog progressDialog;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentAdminHomeBinding.inflate(inflater, container, false);
+        binding = FragmentAnggotaMotorBinding.inflate(inflater, container, false);
         anggotaIService = DataApi.getClient().create(AnggotaIService.class);
-
-
-
 
 
         return binding.getRoot();
@@ -49,26 +49,7 @@ public class FragmentAdminHome extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getAllMobil();
         getMotor();
-        listener();
-    }
-
-    private void listener() {
-        binding.cvMenuMobil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replace(new AdminMobilFragment());
-            }
-        });
-
-        binding.cvMenuMotor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replace(new AdminMotorFragment());
-            }
-        });
-
 
     }
 
@@ -78,11 +59,14 @@ public class FragmentAdminHome extends Fragment {
             @Override
             public void onResponse(Call<List<MotorModel>> call, Response<List<MotorModel>> response) {
                 if (response.isSuccessful() && response.body().size() > 0) {
-                    binding.tvtTotalMotor.setText(String.valueOf(response.body().size()));
+                    motorModelList = response.body();
+                    adminMotorAdapter = new AdminMotorAdapter(getContext(), motorModelList);
+                    linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                    binding.rvMotor.setLayoutManager(linearLayoutManager);
+                    binding.rvMotor.setAdapter(adminMotorAdapter);
+                    binding.rvMotor.setHasFixedSize(true);
                     showProgressBar("dsd", "sd",false);
                 }else {
-                    binding.tvtTotalMotor.setText("0");
-
                     showProgressBar("Sds", "dss", false);
                 }
             }
@@ -90,8 +74,6 @@ public class FragmentAdminHome extends Fragment {
             @Override
             public void onFailure(Call<List<MotorModel>> call, Throwable t) {
                 showProgressBar("Sds", "dss", false);
-                binding.tvtTotalMotor.setText("0");
-
                 showToast("error", "Tidak ada koneksi internet");
 
 
@@ -99,32 +81,6 @@ public class FragmentAdminHome extends Fragment {
         });
 
     }
-
-    private void getAllMobil() {
-        showProgressBar("Loading", "Memuat data...", true);
-        anggotaIService.getMobilByStatus("all").enqueue(new Callback<List<MobilModel>>() {
-            @Override
-            public void onResponse(Call<List<MobilModel>> call, Response<List<MobilModel>> response) {
-                if (response.isSuccessful() && response.body().size() > 0) {
-                    binding.tvTotalMobil.setText(String.valueOf(response.body().size()));
-                    showProgressBar("Sd", "Dss", false);
-                }else {
-                    showProgressBar("sds", "sd", false);
-                    binding.tvTotalMobil.setText("0");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<MobilModel>> call, Throwable t) {
-                showProgressBar("sds", "sd", false);
-                binding.tvTotalMobil.setText("0");
-                showToast("error", "Tidak ada koneksi internet");
-
-            }
-        });
-    }
-
-
 
     private void showProgressBar(String title, String message, boolean isLoading) {
         if (isLoading) {
@@ -151,10 +107,4 @@ public class FragmentAdminHome extends Fragment {
             Toasty.error(getContext(), text, Toasty.LENGTH_SHORT).show();
         }
     }
-
-    private void replace(Fragment fragment) {
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameAdmin, fragment)
-                .addToBackStack(null).commit();
-    }
-
 }

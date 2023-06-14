@@ -125,6 +125,7 @@
 
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvMenuMotor"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_130sdp"
                     android:background="@color/black"
@@ -150,14 +151,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_23sdp"
                             android:layout_below="@id/tv5"
-                            android:text="1"
+                            android:id="@+id/tvtTotalMotor"
                             android:textSize="@dimen/_40sdp"/>
 
                         <ImageView
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="@dimen/_80sdp"
                             android:layout_alignParentRight="true"
-                            android:src="@drawable/baseline_car_repair_24"
+                            android:src="@drawable/baseline_electric_bike_24"
                             app:tint="@color/grey" />
                     </RelativeLayout>
 
