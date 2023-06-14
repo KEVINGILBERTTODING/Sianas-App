@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentSopir.FragmentSopirPerawatanTambah">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:text="Pengajuan Service"
+                android:textSize="@dimen/_20sdp"
+                android:fontFamily="@font/popsem"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:padding="@dimen/_14sdp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Mobil"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/popmed"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <TextView
+                    android:id="@+id/etJenismobil"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp"
+                    android:textSize="@dimen/_11ssp"
+                    android:fontFamily="@font/popmed"
+                    android:background="@drawable/container_textbox"
+                    android:text="Kijang Inova"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="No Polisi"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/popmed"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <TextView
+                    android:id="@+id/etNopolisi"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp"
+                    android:textSize="@dimen/_11ssp"
+                    android:fontFamily="@font/popmed"
+                    android:background="@drawable/container_textbox"
+                    android:text="AB 0913 H"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Jenis Perawatan"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/popmed"
+                    android:textSize="@dimen/_13ssp"/>
+
+
+                <EditText
+                    android:id="@+id/etJenisperawatan"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp"
+                    android:textSize="@dimen/_11ssp"
+                    android:fontFamily="@font/popmed"
+                    android:background="@drawable/container_edittext"
+                    android:hint="Cuci/Ganti Ban/Ganti Seperpat"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Tanggal Service"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/popmed"
+                    android:textSize="@dimen/_13ssp"/>
+
+
+                <EditText
+                    android:id="@+id/etTanggal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp"
+                    android:textSize="@dimen/_11ssp"
+                    android:fontFamily="@font/popmed"
+                    android:background="@drawable/container_edittext"
+                    android:hint="Harusnya Pake Tanggal"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnpengajuan"
+                    android:layout_width="@dimen/_280sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/popsem"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="KIRIM PENGAJUAN"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
