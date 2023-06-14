@@ -3,6 +3,7 @@
 
     <item
         android:title="Home"
+        android:id="@+id/menuHome"
         android:icon="@drawable/baseline_home_24"/>
     <item
         android:title="Riwayat"

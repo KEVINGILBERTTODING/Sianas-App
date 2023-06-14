@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.sianasapp.Model.UserModel;
 import com.example.sianasapp.Util.AuthInterface;
+import com.example.sianasapp.Util.Constans;
 import com.example.sianasapp.Util.DataApi;
 
 import es.dmoral.toasty.Toasty;
@@ -75,9 +76,9 @@ public class LoginActivity extends AppCompatActivity {
                         public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                             if (response.isSuccessful() && response.body().getCode() == 200) {
                                 editor.putBoolean("logged_in", true);
-                                editor.putString("nama", response.body().getNama());
-                                editor.putString("user_id", response.body().getUserId());
-                                editor.putInt("role", response.body().getRole());
+                                editor.putString(Constans.SHARED_PREF_NAMA_LENGKAP, response.body().getNama());
+                                editor.putString(Constans.SHARED_PREF_USER_ID, response.body().getUserId());
+                                editor.putInt(Constans.SHARED_PREF_ROLE, response.body().getRole());
                                 editor.apply();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 finish();
@@ -109,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         btnLogin = findViewById(R.id.btnLogin);
         authInterface = DataApi.getClient().create(AuthInterface.class);
-        sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(Constans.SHARED_PREF_NAME, MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
 

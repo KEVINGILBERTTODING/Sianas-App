@@ -42,7 +42,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:layout_marginLeft="@dimen/_20sdp"
-                        android:text="NAMA PEMINJAM"
+                        android:text="KEIN GILBERT TODING"
                         android:fontFamily="@font/popsem"/>
 
                     <TextView
@@ -52,7 +52,7 @@
                         android:layout_marginLeft="@dimen/_130sdp"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:fontFamily="@font/popsem"
-                        android:text="Jabatan" />
+                        android:text="KEPALA BAGIAN STAFF KEUANGAN" />
 
                     <TextView
                         android:id="@+id/tv3"
