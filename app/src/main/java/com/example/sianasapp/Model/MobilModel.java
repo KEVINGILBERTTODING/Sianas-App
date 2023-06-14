@@ -8,6 +8,9 @@ public class MobilModel implements Serializable {
     @SerializedName("nama")
     private String nama;
 
+    @SerializedName("no_mobil")
+    String noMobil;
+
     @SerializedName("no_hp")
     private String noHp;
 
@@ -51,7 +54,7 @@ public class MobilModel implements Serializable {
     private String foto;
 
 
-    public MobilModel(String nama, String noHp, String alamat, String username, String password, String role, String jenisMobil, String noPlat, String tglPjk, String noRangka, String noMesin, String noStnk, String warna, String status, String foto) {
+    public MobilModel(String nama, String noHp, String noMobil, String alamat, String username, String password, String role, String jenisMobil, String noPlat, String tglPjk, String noRangka, String noMesin, String noStnk, String warna, String status, String foto) {
         this.nama = nama;
         this.noHp = noHp;
         this.alamat = alamat;
@@ -67,6 +70,7 @@ public class MobilModel implements Serializable {
         this.warna = warna;
         this.status = status;
         this.foto = foto;
+        this.noMobil = noMobil;
     }
 
     public String getNama() {
@@ -187,5 +191,13 @@ public class MobilModel implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getNoMobil() {
+        return noMobil;
+    }
+
+    public void setNoMobil(String noMobil) {
+        this.noMobil = noMobil;
     }
 }

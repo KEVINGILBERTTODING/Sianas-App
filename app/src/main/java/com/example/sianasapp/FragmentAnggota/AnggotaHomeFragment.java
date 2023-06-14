@@ -86,6 +86,12 @@ public class AnggotaHomeFragment extends Fragment {
                 replace(new AnggotaRiwayatFragment());
             }
         });
+        binding.btnpengajuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replace(new AnggotaPengajuanPeminjamanFragment());
+            }
+        });
     }
 
 
