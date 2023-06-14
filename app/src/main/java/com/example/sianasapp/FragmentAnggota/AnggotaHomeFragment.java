@@ -17,11 +17,13 @@ import android.widget.TextView;
 
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.MotorModel;
+import com.example.sianasapp.Model.RiwayatModel;
 import com.example.sianasapp.R;
 import com.example.sianasapp.Util.AnggotaIService;
 import com.example.sianasapp.Util.Constans;
 import com.example.sianasapp.Util.DataApi;
 import com.example.sianasapp.adapter.anggota.AnggotaMotorAdapter;
+import com.example.sianasapp.adapter.anggota.AnggotaRiwayatAdapter;
 import com.example.sianasapp.databinding.FragmentAnggotaHomeBinding;
 
 import java.util.List;
@@ -36,6 +38,7 @@ public class AnggotaHomeFragment extends Fragment {
     SharedPreferences sharedPreferences;
     AlertDialog progressDialog;
     private AnggotaIService anggotaIService;
+    private String userId;
 
     private FragmentAnggotaHomeBinding binding;
 
@@ -47,6 +50,7 @@ public class AnggotaHomeFragment extends Fragment {
         sharedPreferences = getContext().getSharedPreferences("user_data", Context.MODE_PRIVATE);
         binding.tvUsername.setText(sharedPreferences.getString(Constans.SHARED_PREF_NAMA_LENGKAP, null));
         anggotaIService = DataApi.getClient().create(AnggotaIService.class);
+        userId = sharedPreferences.getString(Constans.SHARED_PREF_USER_ID, null);
 
 
         return binding.getRoot();
@@ -58,6 +62,7 @@ public class AnggotaHomeFragment extends Fragment {
         getAllMobil();
         getMotor();
         listener();
+        getHistory();
     }
 
     private void listener() {
@@ -72,6 +77,13 @@ public class AnggotaHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 replace(new AnggotaMotorFragment());
+            }
+        });
+
+        binding.cvMenuRiwayat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replace(new AnggotaRiwayatFragment());
             }
         });
     }
@@ -129,6 +141,32 @@ public class AnggotaHomeFragment extends Fragment {
 
     }
 
+    private void getHistory() {
+        showProgressBar("Loading", "Memuat data...", true);
+        anggotaIService.getMyHistory(userId).enqueue(new Callback<List<RiwayatModel>>() {
+            @Override
+            public void onResponse(Call<List<RiwayatModel>> call, Response<List<RiwayatModel>> response) {
+                if (response.isSuccessful() && response.body().size() > 0) {
+                    binding.tvTotalRiwayat.setText(String.valueOf(response.body().size()));
+
+                    showProgressBar("dsd", "sd",false);
+                }else {
+                    showProgressBar("Sds", "dss", false);
+                    binding.tvTotalRiwayat.setText("0");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<RiwayatModel>> call, Throwable t) {
+                showProgressBar("Sds", "dss", false);
+                showToast("error", "Tidak ada koneksi internet");
+
+
+            }
+        });
+
+    }
 
 
 

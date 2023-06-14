@@ -76,7 +76,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv3"
                             android:layout_marginLeft="30dp"
-                            android:text="9"
+
                             android:fontFamily="@font/popligth"
                             android:textSize="@dimen/_25sdp"/>
 
@@ -116,7 +116,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv5"
                             android:layout_marginLeft="30dp"
-                            android:text="9"
+
                             android:fontFamily="@font/popligth"
                             android:textSize="@dimen/_25sdp"/>
 
@@ -134,6 +134,7 @@
                     android:layout_height="130dp"
                     android:background="@color/black"
                     app:cardCornerRadius="15dp"
+                    android:id="@+id/cvMenuRiwayat"
                     app:cardElevation="10dp"
                     app:cardUseCompatPadding="true">
 
@@ -147,16 +148,16 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_marginLeft="20dp"
-                            android:text="SURAT BELUM DIKONFIRMASI"
+                            android:text="RIWAYAT PENGAJUAN"
                             android:fontFamily="@font/popsem"/>
 
                         <TextView
-                            android:id="@+id/tv8"
+                            android:id="@+id/tvTotalRiwayat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv7"
                             android:layout_marginLeft="30dp"
-                            android:text="9"
+
                             android:fontFamily="@font/popligth"
                             android:textSize="@dimen/_25sdp"/>
 

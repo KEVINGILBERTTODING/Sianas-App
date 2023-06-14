@@ -1,66 +1,132 @@
 package com.example.sianasapp.FragmentAnggota;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.sianasapp.Model.ResponseModel;
 import com.example.sianasapp.R;
+import com.example.sianasapp.Util.AnggotaIService;
+import com.example.sianasapp.Util.DataApi;
+import com.example.sianasapp.databinding.FragmentAnggotaRiwayatDetailBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AnggotaRiwayatDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import es.dmoral.toasty.Toasty;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AnggotaRiwayatDetailFragment extends Fragment {
+    private String noPemesanan;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentAnggotaRiwayatDetailBinding binding;
+    private AnggotaIService anggotaIService;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public AnggotaRiwayatDetailFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AnggotaRiwayatDetailFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AnggotaRiwayatDetailFragment newInstance(String param1, String param2) {
-        AnggotaRiwayatDetailFragment fragment = new AnggotaRiwayatDetailFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private AlertDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_anggota_riwayat_detail, container, false);
+        binding = FragmentAnggotaRiwayatDetailBinding.inflate(inflater, container, false);
+        noPemesanan = getArguments().getString("no_pengajuan");
+        anggotaIService = DataApi.getClient().create(AnggotaIService.class);
+
+        binding.etAlamattujuan1.setText(getArguments().getString("alamat1"));
+        binding.etAlamattujuan2.setText(getArguments().getString("alamat2"));
+        binding.etAlamattujuan3.setText(getArguments().getString("alamat3"));
+        binding.etKota1.setText(getArguments().getString("kota1"));
+        binding.etKota2.setText(getArguments().getString("kota2"));
+        binding.etKota3.setText(getArguments().getString("kota3"));
+        binding.etTujuankunjungan1.setText(getArguments().getString("tujuan1"));
+        binding.etTujuankunjungan2.setText(getArguments().getString("tujuan2"));
+        binding.etTujuankunjungan3.setText(getArguments().getString("tujuan3"));
+        binding.etJenismobil.setText(getArguments().getString("jenis_mobil"));
+        binding.etNoPolisi.setText(getArguments().getString("nopol"));
+        binding.etTglPeminjaman.setText(getArguments().getString("tgl_pinjam"));
+        binding.etTglKembali.setText(getArguments().getString("tgl_kembali"));
+        binding.etNamaSopir.setText(getArguments().getString("nama_sopir"));
+        binding.etBanyakPenumpang.setText(getArguments().getString("penumpang"));
+        binding.etKmAwal.setText(getArguments().getString("km_awal"));
+        binding.etKmAkhir.setText(getArguments().getString("km_akhir"));
+
+        if (getArguments().getString("konfirmasi").equals("Dicancel")) {
+            binding.btnBatal.setVisibility(View.GONE);
+        }
+
+
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        listener();
+    }
+
+    private void listener() {
+        binding.btnBatal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancelPengajuan();
+            }
+        });
+    }
+
+    private void cancelPengajuan() {
+        showProgressBar("Loading", "Cacel pengajuan...", true);
+        anggotaIService.cancelPengajuan(noPemesanan).enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if (response.isSuccessful() && response.body().getCode() == 200) {
+                    showProgressBar("sdd", "dss", false);
+                    showToast("success", "Berhasil cancel pengajuan");
+                    getActivity().onBackPressed();
+                }else {
+                    showProgressBar("sdd", "dss", false);
+                    showToast("error", "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                showProgressBar("sdd", "dss", false);
+                showToast("error", "Tidak ada koneksi internet");
+
+            }
+        });
+
+    }
+
+    private void showProgressBar(String title, String message, boolean isLoading) {
+        if (isLoading) {
+            // Membuat progress dialog baru jika belum ada
+            if (progressDialog == null) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle(title);
+                builder.setMessage(message);
+                builder.setCancelable(false);
+                progressDialog = builder.create();
+            }
+            progressDialog.show(); // Menampilkan progress dialog
+        } else {
+            // Menyembunyikan progress dialog jika ada
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+        }
+    }
+    private void showToast(String jenis, String text) {
+        if (jenis.equals("success")) {
+            Toasty.success(getContext(), text, Toasty.LENGTH_SHORT).show();
+        }else {
+            Toasty.error(getContext(), text, Toasty.LENGTH_SHORT).show();
+        }
     }
 }
