@@ -1,317 +1,324 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    tools:context=".FragmentAdmin.FragmentAdminHome">
 
-    <LinearLayout
-        android:id="@+id/layout1"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:padding="24dp"
-        android:orientation="vertical"
-        android:background="@drawable/header">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/popmed"
-            android:text="Selamat datang,"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_10ssp" />
-
-        <TextView
-            android:id="@+id/tvUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/popmed"
-            android:text="Ara"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_18ssp"/>
-    </LinearLayout>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout1">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/white"
+        tools:context=".FragmentAdmin.FragmentAdminHome">
 
         <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:padding="24dp"
+            android:orientation="vertical"
+            android:background="@drawable/header">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/popmed"
+                android:text="Selamat datang,"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp" />
+
+            <TextView
+                android:id="@+id/tvUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/popmed"
+                android:text="Ara"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp"/>
+        </LinearLayout>
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@id/layout1">
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_130sdp"
-                android:background="@color/black"
-                app:cardCornerRadius="@dimen/_15sdp"
-                app:cardElevation="@dimen/_10sdp"
-                app:cardUseCompatPadding="true">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <RelativeLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/_130sdp"
+                    android:background="@color/black"
+                    app:cardCornerRadius="@dimen/_15sdp"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true">
 
-                    <TextView
-                        android:id="@+id/tv1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:text="KONFIRMASI MENUNGGU"
-                        android:fontFamily="@font/popsem"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_23sdp"
-                        android:layout_below="@id/tv1"
-                        android:text="1"
-                        android:textSize="@dimen/_40sdp"/>
+                        <TextView
+                            android:id="@+id/tv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:text="KONFIRMASI PENGAJUAN"
+                            android:fontFamily="@font/popsem"/>
 
-                    <ImageView
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/baseline_history_24"
-                        app:tint="@color/grey" />
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tvTotalKonfirmasi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_23sdp"
+                            android:layout_below="@id/tv1"
+                            android:text="1"
+                            android:textSize="@dimen/_40sdp"/>
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_130sdp"
-                android:background="@color/black"
-                app:cardCornerRadius="@dimen/_15sdp"
-                app:cardElevation="@dimen/_10sdp"
-                app:cardUseCompatPadding="true">
+                        <ImageView
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/baseline_history_24"
+                            app:tint="@color/grey" />
+                    </RelativeLayout>
 
-                <RelativeLayout
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/_130sdp"
+                    android:background="@color/black"
+                    android:id="@+id/cvMenuMobil"
+                    app:cardCornerRadius="@dimen/_15sdp"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true">
 
-                    <TextView
-                        android:id="@+id/tv3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:text="MOBIL TIDAK DIGUNAKAN"
-                        android:fontFamily="@font/popsem"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_23sdp"
-                        android:layout_below="@id/tv3"
-                        android:text="1"
-                        android:textSize="@dimen/_40sdp"/>
+                        <TextView
+                            android:id="@+id/tv3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:text="MOBIL"
+                            android:fontFamily="@font/popsem"/>
 
-                    <ImageView
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/baseline_directions_car_filled_24"
-                        app:tint="@color/grey" />
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tvTotalMobil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_23sdp"
+                            android:layout_below="@id/tv3"
+                            android:textSize="@dimen/_40sdp"/>
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_130sdp"
-                android:background="@color/black"
-                app:cardCornerRadius="@dimen/_15sdp"
-                app:cardElevation="@dimen/_10sdp"
-                app:cardUseCompatPadding="true">
+                        <ImageView
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/baseline_directions_car_filled_24"
+                            app:tint="@color/grey" />
+                    </RelativeLayout>
 
-                <RelativeLayout
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/_130sdp"
+                    android:background="@color/black"
+                    app:cardCornerRadius="@dimen/_15sdp"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true">
 
-                    <TextView
-                        android:id="@+id/tv5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:text="MOTOR"
-                        android:fontFamily="@font/popsem"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_23sdp"
-                        android:layout_below="@id/tv5"
-                        android:text="1"
-                        android:textSize="@dimen/_40sdp"/>
+                        <TextView
+                            android:id="@+id/tv5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:text="MOTOR"
+                            android:fontFamily="@font/popsem"/>
 
-                    <ImageView
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/baseline_car_repair_24"
-                        app:tint="@color/grey" />
-                </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_23sdp"
+                            android:layout_below="@id/tv5"
+                            android:text="1"
+                            android:textSize="@dimen/_40sdp"/>
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_130sdp"
-                android:background="@color/black"
-                app:cardCornerRadius="@dimen/_15sdp"
-                app:cardElevation="@dimen/_10sdp"
-                app:cardUseCompatPadding="true">
+                        <ImageView
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/baseline_car_repair_24"
+                            app:tint="@color/grey" />
+                    </RelativeLayout>
 
-                <RelativeLayout
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/_130sdp"
+                    android:background="@color/black"
+                    app:cardCornerRadius="@dimen/_15sdp"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true">
 
-                    <TextView
-                        android:id="@+id/tv7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:text="SERVICE"
-                        android:fontFamily="@font/popsem"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_23sdp"
-                        android:layout_below="@id/tv7"
-                        android:text="1"
-                        android:textSize="@dimen/_40sdp"/>
+                        <TextView
+                            android:id="@+id/tv7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:text="SERVICE"
+                            android:fontFamily="@font/popsem"/>
 
-                    <ImageView
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/baseline_car_repair_24"
-                        app:tint="@color/grey" />
-                </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_23sdp"
+                            android:layout_below="@id/tv7"
+                            android:text="1"
+                            android:textSize="@dimen/_40sdp"/>
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_130sdp"
-                android:background="@color/black"
-                app:cardCornerRadius="@dimen/_15sdp"
-                app:cardElevation="@dimen/_10sdp"
-                app:cardUseCompatPadding="true">
+                        <ImageView
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/baseline_car_repair_24"
+                            app:tint="@color/grey" />
+                    </RelativeLayout>
 
-                <RelativeLayout
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/_130sdp"
+                    android:background="@color/black"
+                    app:cardCornerRadius="@dimen/_15sdp"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true">
 
-                    <TextView
-                        android:id="@+id/tv9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:text="PERAWATAN LAIN"
-                        android:fontFamily="@font/popsem"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_23sdp"
-                        android:layout_below="@id/tv9"
-                        android:text="1"
-                        android:textSize="@dimen/_40sdp"/>
+                        <TextView
+                            android:id="@+id/tv9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:text="PERAWATAN LAIN"
+                            android:fontFamily="@font/popsem"/>
 
-                    <ImageView
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/baseline_build_24"
-                        app:tint="@color/grey" />
-                </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_23sdp"
+                            android:layout_below="@id/tv9"
+                            android:text="1"
+                            android:textSize="@dimen/_40sdp"/>
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_130sdp"
-                android:background="@color/black"
-                app:cardCornerRadius="@dimen/_15sdp"
-                app:cardElevation="@dimen/_10sdp"
-                app:cardUseCompatPadding="true">
+                        <ImageView
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/baseline_build_24"
+                            app:tint="@color/grey" />
+                    </RelativeLayout>
 
-                <RelativeLayout
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/_130sdp"
+                    android:background="@color/black"
+                    app:cardCornerRadius="@dimen/_15sdp"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true">
 
-                    <TextView
-                        android:id="@+id/tv11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:text="ANGGOTA"
-                        android:fontFamily="@font/popsem"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_23sdp"
-                        android:layout_below="@id/tv11"
-                        android:text="1"
-                        android:textSize="@dimen/_40sdp"/>
+                        <TextView
+                            android:id="@+id/tv11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:text="ANGGOTA"
+                            android:fontFamily="@font/popsem"/>
 
-                    <ImageView
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/baseline_person_2_24"
-                        app:tint="@color/grey" />
-                </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_23sdp"
+                            android:layout_below="@id/tv11"
+                            android:text="1"
+                            android:textSize="@dimen/_40sdp"/>
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_130sdp"
-                android:background="@color/black"
-                app:cardCornerRadius="@dimen/_15sdp"
-                app:cardElevation="@dimen/_10sdp"
-                app:cardUseCompatPadding="true">
+                        <ImageView
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/baseline_person_2_24"
+                            app:tint="@color/grey" />
+                    </RelativeLayout>
 
-                <RelativeLayout
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/_130sdp"
+                    android:background="@color/black"
+                    app:cardCornerRadius="@dimen/_15sdp"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true">
 
-                    <TextView
-                        android:id="@+id/tv13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:text="SOPIR"
-                        android:fontFamily="@font/popsem"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_23sdp"
-                        android:layout_below="@id/tv13"
-                        android:text="1"
-                        android:textSize="@dimen/_40sdp"/>
+                        <TextView
+                            android:id="@+id/tv13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:text="SOPIR"
+                            android:fontFamily="@font/popsem"/>
 
-                    <ImageView
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/baseline_person_2_24"
-                        app:tint="@color/grey" />
-                </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_23sdp"
+                            android:layout_below="@id/tv13"
+                            android:text="1"
+                            android:textSize="@dimen/_40sdp"/>
 
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
+                        <ImageView
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/baseline_person_2_24"
+                            app:tint="@color/grey" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
 
 
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</layout>
