@@ -77,6 +77,7 @@ public class AnggotaRiwayatDetailFragment extends Fragment {
                 cancelPengajuan();
             }
         });
+
     }
 
     private void cancelPengajuan() {

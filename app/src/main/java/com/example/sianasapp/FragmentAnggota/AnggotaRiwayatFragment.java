@@ -1,8 +1,12 @@
 package com.example.sianasapp.FragmentAnggota;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TextView;
 
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.RiwayatModel;
@@ -23,6 +30,8 @@ import com.example.sianasapp.Util.DataApi;
 import com.example.sianasapp.adapter.anggota.AnggotaMobilAdapter;
 import com.example.sianasapp.adapter.anggota.AnggotaRiwayatAdapter;
 import com.example.sianasapp.databinding.FragmentAnggotaRiwayatBinding;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -58,7 +67,57 @@ public class AnggotaRiwayatFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getHistory();
+        listener();
     }
+
+    private void listener() {
+        binding.btnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.layout_filter);
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                TextView tvTglAwal, tvTglAkhir;
+                tvTglAwal = dialog.findViewById(R.id.tvTglAwal);
+                tvTglAkhir = dialog.findViewById(R.id.tvTglAkhir);
+                tvTglAwal.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        getDateTimePicker(tvTglAwal);
+
+
+                    }
+                });
+                tvTglAkhir.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        getDateTimePicker(tvTglAkhir);
+
+                    }
+                });
+                Button btnFilter = dialog.findViewById(R.id.btnFilter);
+
+                btnFilter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (tvTglAwal.getText().toString().isEmpty()) {
+                            tvTglAwal.setError("Tidak boleh kosong");
+                        }else if (tvTglAkhir.getText().toString().isEmpty()) {
+                            tvTglAkhir.setError("Tidak boleh kosong");
+                        }else {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setData(Uri.parse(Constans.URL_DOWNLOAD_LAPORAN  + userId +"/" + tvTglAwal.getText().toString() + "/" + tvTglAkhir
+                                    .getText().toString()));
+                            startActivity(intent);
+                        }
+                    }
+                });
+
+                dialog.show();
+            }
+        });
+    }
+
     private void getHistory() {
         showProgressBar("Loading", "Memuat data...", true);
         anggotaIService.getMyHistory(userId).enqueue(new Callback<List<RiwayatModel>>() {
@@ -89,7 +148,6 @@ public class AnggotaRiwayatFragment extends Fragment {
     }
 
 
-
     private void showProgressBar(String title, String message, boolean isLoading) {
         if (isLoading) {
             // Membuat progress dialog baru jika belum ada
@@ -114,5 +172,30 @@ public class AnggotaRiwayatFragment extends Fragment {
         }else {
             Toasty.error(getContext(), text, Toasty.LENGTH_SHORT).show();
         }
+    }
+
+    private void getDateTimePicker(TextView tvDate) {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext());
+        datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                String dateFormatted, monthFormatted;
+                if (month < 10) {
+                    monthFormatted = String.format("%02d", month + 1);
+                }else {
+                    monthFormatted = String.valueOf(month + 1);
+                }
+
+                if (dayOfMonth < 10) {
+                    dateFormatted = String.format("%02d", dayOfMonth);
+                }else {
+                    dateFormatted = String.valueOf(dayOfMonth);
+                }
+
+                tvDate.setText(year + "-" + monthFormatted + "-" + dateFormatted);
+            }
+        });
+
+        datePickerDialog.show();
     }
 }
