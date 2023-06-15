@@ -29,10 +29,10 @@ public class AdminMainActivty extends AppCompatActivity {
                     replace(new FragmentAdminHome());
                     return true;
                 }else if (item.getItemId() == R.id.menuRiwayat) {
-                    replace(new AnggotaRiwayatFragment());
+                    replace(new AdminRiwayatFragment());
                     return true;
                 }else if (item.getItemId() == R.id.menuProfile) {
-                    replace(new AnggotaProfilFragment());
+                    replace(new AdminProfilFragment());
                     return true;
                 }
                 return false;

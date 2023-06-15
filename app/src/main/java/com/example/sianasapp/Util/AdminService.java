@@ -1,5 +1,6 @@
 package com.example.sianasapp.Util;
 
+import com.example.sianasapp.Model.AdminModel;
 import com.example.sianasapp.Model.AnggotaModel;
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.ResponseModel;
@@ -118,6 +119,22 @@ public interface AdminService {
     @POST("admin/deleteAnggota")
     Call<ResponseModel> deleteAnggota(
             @Field("id") String id
+    );
+
+    @GET("admin/getmyprofile")
+    Call<AdminModel> getMyProfile(
+            @Query("id") String id
+    );
+
+
+    @FormUrlEncoded
+    @POST("admin/updatemyprofile")
+    Call<ResponseModel> updateMyProfile(
+            @Field("id") String id,
+            @Field("nama") String nama,
+            @Field("username") String username,
+            @Field("password") String password
+
     );
 
 }
