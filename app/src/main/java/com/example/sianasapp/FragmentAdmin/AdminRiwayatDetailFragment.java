@@ -88,6 +88,16 @@ public class AdminRiwayatDetailFragment extends Fragment {
             }
         });
 
+        binding.btnDownloadBukti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = Constans.URL_DOWNLOAD_BUKTI + noPemesanan;
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void showProgressBar(String title, String message, boolean isLoading) {
