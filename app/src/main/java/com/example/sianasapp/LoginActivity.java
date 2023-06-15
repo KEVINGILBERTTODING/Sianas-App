@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sianasapp.FragmentAdmin.AdminMainActivty;
+import com.example.sianasapp.FragmentSopir.SopirMainActivity;
 import com.example.sianasapp.Model.UserModel;
 import com.example.sianasapp.Util.AuthInterface;
 import com.example.sianasapp.Util.Constans;
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, AdminMainActivty.class));
                 finish();
             }else if (sharedPreferences.getInt("role", 0) == 3) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                startActivity(new Intent(LoginActivity.this, SopirMainActivity.class));
                 finish();
             }
         }
@@ -84,13 +85,21 @@ public class LoginActivity extends AppCompatActivity {
                                     editor.apply();
                                     startActivity(new Intent(LoginActivity.this, AdminMainActivty.class));
                                     finish();
-                                }else if (response.body().getRole() == 2) {
+                                }else if (response.body().getRole() == 2) { // anggota
                                     editor.putBoolean("logged_in", true);
                                     editor.putString(Constans.SHARED_PREF_NAMA_LENGKAP, response.body().getNama());
                                     editor.putString(Constans.SHARED_PREF_USER_ID, response.body().getUserId());
                                     editor.putInt(Constans.SHARED_PREF_ROLE, response.body().getRole());
                                     editor.apply();
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
+                                }else if (response.body().getRole() == 3) { // sopir
+                                    editor.putBoolean("logged_in", true);
+                                    editor.putString(Constans.SHARED_PREF_NAMA_LENGKAP, response.body().getNama());
+                                    editor.putString(Constans.SHARED_PREF_USER_ID, response.body().getUserId());
+                                    editor.putInt(Constans.SHARED_PREF_ROLE, response.body().getRole());
+                                    editor.apply();
+                                    startActivity(new Intent(LoginActivity.this, SopirMainActivity.class));
                                     finish();
                                 }
 
