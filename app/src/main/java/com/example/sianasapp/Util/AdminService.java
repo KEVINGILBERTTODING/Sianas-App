@@ -2,6 +2,9 @@ package com.example.sianasapp.Util;
 
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.ResponseModel;
+import com.example.sianasapp.Model.RiwayatModel;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -47,4 +50,9 @@ public interface AdminService {
     Call<ResponseModel> deleteMotor(
             @Field("id") String id
     );
+
+    @GET("admin/getPengajuanByStatus")
+    Call<List<RiwayatModel>> getAllPengajuanByStatus(
+            @Query("status") String status
+     );
 }

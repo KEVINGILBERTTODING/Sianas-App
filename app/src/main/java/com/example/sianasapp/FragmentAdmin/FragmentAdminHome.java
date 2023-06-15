@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.MotorModel;
+import com.example.sianasapp.Model.RiwayatModel;
 import com.example.sianasapp.R;
+import com.example.sianasapp.Util.AdminService;
 import com.example.sianasapp.Util.AnggotaIService;
 import com.example.sianasapp.Util.DataApi;
 import com.example.sianasapp.databinding.FragmentAdminHomeBinding;
@@ -29,6 +31,7 @@ public class FragmentAdminHome extends Fragment {
     private FragmentAdminHomeBinding binding;
     AnggotaIService anggotaIService;
     private AlertDialog progressDialog;
+    private AdminService adminService;
 
 
 
@@ -38,6 +41,7 @@ public class FragmentAdminHome extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentAdminHomeBinding.inflate(inflater, container, false);
         anggotaIService = DataApi.getClient().create(AnggotaIService.class);
+        adminService = DataApi.getClient().create(AdminService.class);
 
 
 
@@ -51,6 +55,7 @@ public class FragmentAdminHome extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getAllMobil();
         getMotor();
+        getKonfirmasi();
         listener();
     }
 
@@ -66,6 +71,13 @@ public class FragmentAdminHome extends Fragment {
             @Override
             public void onClick(View v) {
                 replace(new AdminMotorFragment());
+            }
+        });
+
+        binding.cvMenuKonfirmasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replace(new AdminRiwayatFragment());
             }
         });
 
@@ -118,6 +130,30 @@ public class FragmentAdminHome extends Fragment {
             public void onFailure(Call<List<MobilModel>> call, Throwable t) {
                 showProgressBar("sds", "sd", false);
                 binding.tvTotalMobil.setText("0");
+                showToast("error", "Tidak ada koneksi internet");
+
+            }
+        });
+    }
+
+    private void getKonfirmasi() {
+        showProgressBar("Loading", "Memuat data...", true);
+        adminService.getAllPengajuanByStatus("Menunggu").enqueue(new Callback<List<RiwayatModel>>() {
+            @Override
+            public void onResponse(Call<List<RiwayatModel>> call, Response<List<RiwayatModel>> response) {
+                if (response.isSuccessful() && response.body().size() > 0) {
+                    binding.tvTotalKonfirmasi.setText(String.valueOf(response.body().size()));
+                    showProgressBar("Sd", "Dss", false);
+                }else {
+                    showProgressBar("sds", "sd", false);
+                    binding.tvTotalKonfirmasi.setText("0");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<RiwayatModel>> call, Throwable t) {
+                showProgressBar("sds", "sd", false);
+                binding.tvTotalKonfirmasi.setText("0");
                 showToast("error", "Tidak ada koneksi internet");
 
             }

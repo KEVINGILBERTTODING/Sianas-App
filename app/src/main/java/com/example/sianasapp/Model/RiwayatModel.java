@@ -11,6 +11,9 @@ public class RiwayatModel implements Serializable {
     @SerializedName("no_anggota")
     private String noAnggota;
 
+    @SerializedName("subbag")
+    String subbag;
+
     @SerializedName("no_mobil")
     private String noMobil;
 
@@ -116,7 +119,7 @@ public class RiwayatModel implements Serializable {
     @SerializedName("foto")
     private String foto;
 
-    public RiwayatModel(String noPengajuan, String noAnggota, String noMobil, String tujuan1, String tujuan2, String tujuan3, String alamat1, String alamat2, String alamat3, String kota1, String kota2, String kota3, String muatan, String tglDigunakan, String tglKembali, String tglUpload, String kmAwal, String kmAkhir, String surat, String bukti, String konfirmasi, String konfirmasiSopir, String nama, String noHp, String alamat, String username, String password, String role, String jenisMobil, String noPlat, String tglPajak, String noRangka, String noMesin, String noStnk, String warna, String status, String foto) {
+    public RiwayatModel(String noPengajuan, String subbag, String noAnggota, String noMobil, String tujuan1, String tujuan2, String tujuan3, String alamat1, String alamat2, String alamat3, String kota1, String kota2, String kota3, String muatan, String tglDigunakan, String tglKembali, String tglUpload, String kmAwal, String kmAkhir, String surat, String bukti, String konfirmasi, String konfirmasiSopir, String nama, String noHp, String alamat, String username, String password, String role, String jenisMobil, String noPlat, String tglPajak, String noRangka, String noMesin, String noStnk, String warna, String status, String foto) {
         this.noPengajuan = noPengajuan;
         this.noAnggota = noAnggota;
         this.noMobil = noMobil;
@@ -129,6 +132,7 @@ public class RiwayatModel implements Serializable {
         this.kota1 = kota1;
         this.kota2 = kota2;
         this.kota3 = kota3;
+        this.subbag = subbag;
         this.muatan = muatan;
         this.tglDigunakan = tglDigunakan;
         this.tglKembali = tglKembali;
@@ -450,5 +454,13 @@ public class RiwayatModel implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getSubbag() {
+        return subbag;
+    }
+
+    public void setSubbag(String subbag) {
+        this.subbag = subbag;
     }
 }

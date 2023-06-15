@@ -49,6 +49,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_130sdp"
+                    android:id="@+id/cvMenuKonfirmasi"
                     android:background="@color/black"
                     app:cardCornerRadius="@dimen/_15sdp"
                     app:cardElevation="@dimen/_10sdp"
@@ -64,7 +65,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:layout_marginLeft="@dimen/_20sdp"
-                            android:text="KONFIRMASI PENGAJUAN"
+                            android:text="MENUNGGU PERSETUJUAN"
                             android:fontFamily="@font/popsem"/>
 
                         <TextView
@@ -73,7 +74,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_23sdp"
                             android:layout_below="@id/tv1"
-                            android:text="1"
                             android:textSize="@dimen/_40sdp"/>
 
                         <ImageView
