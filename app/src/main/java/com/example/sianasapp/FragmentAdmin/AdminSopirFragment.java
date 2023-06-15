@@ -65,7 +65,7 @@ public class AdminSopirFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameAdmin, new AdminInsertAnggotaFragment())
+                        .replace(R.id.frameAdmin, new AdminInsertSopirFragment())
                         .addToBackStack(null).commit();
 
             }

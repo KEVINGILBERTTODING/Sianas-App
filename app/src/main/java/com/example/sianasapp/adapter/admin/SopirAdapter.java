@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sianasapp.FragmentAdmin.AdminUpdateAnggotaFragment;
+import com.example.sianasapp.FragmentAdmin.AdminUpdateSopirFragment;
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.R;
@@ -58,9 +59,15 @@ public class SopirAdapter extends RecyclerView.Adapter<SopirAdapter.ViewHolder> 
 
         @Override
         public void onClick(View v) {
-            Fragment fragment = new AdminUpdateAnggotaFragment();
+            Fragment fragment = new AdminUpdateSopirFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("no_mobil", mobilModelList.get(getAdapterPosition()).getNoMobil());
+            bundle.putString("id", mobilModelList.get(getAdapterPosition()).getNoMobil());
+            bundle.putString("jenis_mobil", mobilModelList.get(getAdapterPosition()).getJenisMobil());
+            bundle.putString("nopol", mobilModelList.get(getAdapterPosition()).getNoPlat());
+            bundle.putString("nama", mobilModelList.get(getAdapterPosition()).getNama());
+            bundle.putString("telepon", mobilModelList.get(getAdapterPosition()).getNoHp());
+            bundle.putString("username", mobilModelList.get(getAdapterPosition()).getUsername());
+            bundle.putString("password", mobilModelList.get(getAdapterPosition()).getNoHp());
             fragment.setArguments(bundle);
             ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frameAdmin, fragment).addToBackStack(null).commit();

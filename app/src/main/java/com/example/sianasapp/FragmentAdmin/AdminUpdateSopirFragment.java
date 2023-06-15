@@ -2,7 +2,6 @@ package com.example.sianasapp.FragmentAdmin;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,27 +12,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.sianasapp.LoginActivity;
-import com.example.sianasapp.Model.AnggotaModel;
 import com.example.sianasapp.Model.ResponseModel;
 import com.example.sianasapp.Util.AdminService;
 import com.example.sianasapp.Util.AnggotaIService;
 import com.example.sianasapp.Util.Constans;
 import com.example.sianasapp.Util.DataApi;
-import com.example.sianasapp.databinding.FragmentAdminInsertAnggotaProfilBinding;
-import com.example.sianasapp.databinding.FragmentAnggotaProfilBinding;
+import com.example.sianasapp.databinding.FragmentAdminInsertSopirBinding;
+import com.example.sianasapp.databinding.FragmentAdminUpdateAnggotaBinding;
+import com.example.sianasapp.databinding.FragmentAdminUpdateSopirBinding;
 
 import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AdminInsertAnggotaFragment extends Fragment {
+public class AdminUpdateSopirFragment extends Fragment {
     SharedPreferences sharedPreferences;
     AnggotaIService anggotaIService;
     AdminService adminService;
-    private FragmentAdminInsertAnggotaProfilBinding binding;
-    private String userId;
+    private FragmentAdminUpdateSopirBinding binding;
+    private String userId, noMobil;
     private AlertDialog progressDialog;
     private SharedPreferences.Editor editor;
 
@@ -42,14 +40,19 @@ public class AdminInsertAnggotaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentAdminInsertAnggotaProfilBinding.inflate(inflater, container, false);
+        binding = FragmentAdminUpdateSopirBinding.inflate(inflater, container, false);
         sharedPreferences = getContext().getSharedPreferences(Constans.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         userId = sharedPreferences.getString(Constans.SHARED_PREF_USER_ID, null);
         anggotaIService = DataApi.getClient().create(AnggotaIService.class);
         adminService = DataApi.getClient().create(AdminService.class);
         editor = sharedPreferences.edit();
 
-
+        binding.etJenisMobil.setText(getArguments().getString("jenis_mobil"));
+        binding.etnopolisi.setText(getArguments().getString("nopol"));
+        binding.etNama.setText(getArguments().getString("nama"));
+        binding.etNoTelepon.setText(getArguments().getString("telepon"));
+        binding.etUsername.setText(getArguments().getString("username"));
+        binding.etPassword.setText(getArguments().getString("password"));
 
 
         return binding.getRoot();
@@ -62,17 +65,18 @@ public class AdminInsertAnggotaFragment extends Fragment {
     }
 
     private void listener() {
-        binding.btnupdate.setOnClickListener(new View.OnClickListener() {
+        binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                updateProfile();
+                updateSopir();
             }
         });
-        binding.btnBatal.setOnClickListener(new View.OnClickListener() {
+
+        binding.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+                deleteSopir();
             }
         });
 
@@ -81,25 +85,26 @@ public class AdminInsertAnggotaFragment extends Fragment {
 
 
 
-    private void updateProfile() {
+    private void updateSopir() {
         showProgressBar("Loading", "Menyimpan data....", true);
-        adminService.insertAnggota(
-                binding.etSubBagian.getText().toString(),
-                binding.etnama.getText().toString(),
-                binding.etnip.getText().toString(),
-                binding.etJabatan.getText().toString(),
-                binding.etnotelpone.getText().toString(),
+        adminService.updateSopir(
+                getArguments().getString("id"),
+                binding.etNama.getText().toString(),
+                binding.etJenisMobil.getText().toString(),
+                binding.etnopolisi.getText().toString(),
+                binding.etNoTelepon.getText().toString(),
                 binding.etUsername.getText().toString(),
                 binding.etPassword.getText().toString()
+
         ).enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 if (response.isSuccessful() && response.body().getCode() == 200) {
                     showProgressBar("dsd", "ddss", false);
-                    showToast("success", "Berhasil menyimpan data");
+                    showToast("success", "Berhasil menambahkan sopir");
                     getActivity().onBackPressed();
                 }else {
-                    showToast("error", "Gagal menyimpan data");
+                    showToast("error", "Gagal menambahkan sopir");
                     showProgressBar("dsd", "ddss", false);
 
                 }
@@ -140,6 +145,30 @@ public class AdminInsertAnggotaFragment extends Fragment {
         }else {
             Toasty.error(getContext(), text, Toasty.LENGTH_SHORT).show();
         }
+    }
+
+    private void deleteSopir() {
+        showProgressBar("Loading", "Menghapus data....", true);
+        adminService.deleteSopir(getArguments().getString("id")).enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if (response.isSuccessful() && response.body().getCode() == 200) {
+                    showProgressBar("d", "d", false);
+                    showToast("success", "Berhasil menghapus data");
+                    getActivity().onBackPressed();
+                }else {
+                    showProgressBar("d", "d", false);
+                    showToast("err", "Gagal menghapus data");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                showProgressBar("d", "d", false);
+                showToast("err", "Tidak ada koneksi internet");
+
+            }
+        });
     }
 
 }

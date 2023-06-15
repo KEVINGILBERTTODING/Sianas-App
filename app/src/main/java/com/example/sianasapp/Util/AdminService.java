@@ -81,4 +81,37 @@ public interface AdminService {
     @GET("admin/getAllSopir")
     Call<List<MobilModel>> getAllSopir();
 
+    @FormUrlEncoded
+    @POST("admin/insertSopir")
+    Call<ResponseModel> insertSopir(
+            @Field("nama") String nama,
+            @Field("jenis_mobil") String jenis_mobil,
+            @Field("no_plat") String no_plat,
+            @Field("no_hp") String no_hp,
+            @Field("username") String username,
+            @Field("password") String password
+
+
+    );
+
+    @FormUrlEncoded
+    @POST("admin/updateSopir")
+    Call<ResponseModel> updateSopir(
+            @Field("id") String id,
+            @Field("nama") String nama,
+            @Field("jenis_mobil") String jenis_mobil,
+            @Field("no_plat") String no_plat,
+            @Field("no_hp") String no_hp,
+            @Field("username") String username,
+            @Field("password") String password
+
+
+    );
+
+    @FormUrlEncoded
+    @POST("admin/deleteSopir")
+    Call<ResponseModel> deleteSopir(
+            @Field("id") String id
+    );
+
 }

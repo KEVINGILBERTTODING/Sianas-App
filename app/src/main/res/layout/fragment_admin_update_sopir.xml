@@ -24,7 +24,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginLeft="@dimen/_15sdp"
-                    android:text="Tambah Anggota"
+                    android:text="Tambah Sopir"
                     android:textSize="@dimen/_20sdp"
                     android:fontFamily="@font/popsem"/>
 
@@ -37,14 +37,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sub Bagian"
+                        android:text="Jenis Mobil"
                         android:textColor="@color/black"
                         android:fontFamily="@font/popmed"
                         android:textSize="@dimen/_13ssp"/>
 
 
                     <EditText
-                        android:id="@+id/etSubBagian"
+                        android:id="@+id/etJenisMobil"
                         android:layout_width="match_parent"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nama"
+                        android:text="No Polisi"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:textColor="@color/black"
                         android:fontFamily="@font/popmed"
@@ -64,7 +64,7 @@
 
 
                     <EditText
-                        android:id="@+id/etnama"
+                        android:id="@+id/etnopolisi"
                         android:layout_width="match_parent"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_height="wrap_content"
@@ -78,19 +78,41 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:text="NIP"
+                        android:text="Nama"
                         android:textColor="@color/black"
                         android:fontFamily="@font/popmed"
                         android:textSize="@dimen/_13ssp"/>
 
 
                     <EditText
-                        android:id="@+id/etnip"
+                        android:id="@+id/etNama"
                         android:layout_width="match_parent"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_10sdp"
                         android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_edittext"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="No Telepon"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <EditText
+                        android:id="@+id/etNoTelepon"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:inputType="number"
                         android:fontFamily="@font/popmed"
                         android:background="@drawable/container_edittext"
                         />
@@ -116,6 +138,8 @@
                         android:background="@drawable/container_edittext"
                         />
 
+
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -132,75 +156,31 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_10sdp"
-                        android:textSize="@dimen/_11ssp"
                         android:inputType="textPassword"
-                        android:fontFamily="@font/popmed"
-                        android:background="@drawable/container_edittext"
-                        />
-
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:text="Jabatan"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_13ssp"/>
-
-
-                    <EditText
-                        android:id="@+id/etJabatan"
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_10sdp"
                         android:textSize="@dimen/_11ssp"
                         android:fontFamily="@font/popmed"
                         android:background="@drawable/container_edittext"
                         />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:text="No Telepone"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/popmed"
-                        android:textSize="@dimen/_13ssp"/>
-
-
-                    <EditText
-                        android:id="@+id/etnotelpone"
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_10sdp"
-                        android:textSize="@dimen/_11ssp"
-                        android:inputType="number"
-                        android:fontFamily="@font/popmed"
-                        android:background="@drawable/container_edittext"
-                        />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnupdate"
+                        android:id="@+id/btnUpdate"
                         android:layout_width="@dimen/_280sdp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:fontFamily="@font/popsem"
                         android:layout_marginTop="@dimen/_20sdp"
-                        android:text="Simpan"/>
+                        android:text="Update"/>
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnBatal"
+                        android:id="@+id/btnDelete"
                         android:layout_width="@dimen/_280sdp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:fontFamily="@font/popsem"
-                        app:backgroundTint="@color/cardview_dark_background"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:text="Batal"/>
+                        app:backgroundTint="@color/red"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Hapus Sopir"/>
 
                 </LinearLayout>
             </LinearLayout>
