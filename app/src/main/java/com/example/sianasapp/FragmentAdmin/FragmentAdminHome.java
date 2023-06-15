@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.sianasapp.Model.AnggotaModel;
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.MotorModel;
 import com.example.sianasapp.Model.RiwayatModel;
@@ -56,6 +57,7 @@ public class FragmentAdminHome extends Fragment {
         getAllMobil();
         getMotor();
         getKonfirmasi();
+        getAnggota();
         listener();
     }
 
@@ -78,6 +80,12 @@ public class FragmentAdminHome extends Fragment {
             @Override
             public void onClick(View v) {
                 replace(new AdminRiwayatFragment());
+            }
+        });
+        binding.cvAnggota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replace(new AdminAnggotaFragment());
             }
         });
 
@@ -103,6 +111,33 @@ public class FragmentAdminHome extends Fragment {
             public void onFailure(Call<List<MotorModel>> call, Throwable t) {
                 showProgressBar("Sds", "dss", false);
                 binding.tvtTotalMotor.setText("0");
+
+                showToast("error", "Tidak ada koneksi internet");
+
+
+            }
+        });
+
+    }
+    private void getAnggota() {
+        showProgressBar("Loading", "Memuat data...", true);
+        adminService.getAllAnggota().enqueue(new Callback<List<AnggotaModel>>() {
+            @Override
+            public void onResponse(Call<List<AnggotaModel>> call, Response<List<AnggotaModel>> response) {
+                if (response.isSuccessful() && response.body().size() > 0) {
+                    binding.tvTotalAnggota.setText(String.valueOf(response.body().size()));
+                    showProgressBar("dsd", "sd",false);
+                }else {
+                    binding.tvTotalAnggota.setText("0");
+
+                    showProgressBar("Sds", "dss", false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<AnggotaModel>> call, Throwable t) {
+                showProgressBar("Sds", "dss", false);
+                binding.tvTotalAnggota.setText("0");
 
                 showToast("error", "Tidak ada koneksi internet");
 

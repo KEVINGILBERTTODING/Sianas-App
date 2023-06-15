@@ -100,29 +100,4 @@ public class AdminRiwayatDetailFragment extends Fragment {
 
     }
 
-    private void showProgressBar(String title, String message, boolean isLoading) {
-        if (isLoading) {
-            // Membuat progress dialog baru jika belum ada
-            if (progressDialog == null) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle(title);
-                builder.setMessage(message);
-                builder.setCancelable(false);
-                progressDialog = builder.create();
-            }
-            progressDialog.show(); // Menampilkan progress dialog
-        } else {
-            // Menyembunyikan progress dialog jika ada
-            if (progressDialog != null && progressDialog.isShowing()) {
-                progressDialog.dismiss();
-            }
-        }
-    }
-    private void showToast(String jenis, String text) {
-        if (jenis.equals("success")) {
-            Toasty.success(getContext(), text, Toasty.LENGTH_SHORT).show();
-        }else {
-            Toasty.error(getContext(), text, Toasty.LENGTH_SHORT).show();
-        }
-    }
 }

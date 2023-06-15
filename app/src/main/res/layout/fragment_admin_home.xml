@@ -245,6 +245,7 @@
                     android:background="@color/black"
                     app:cardCornerRadius="@dimen/_15sdp"
                     app:cardElevation="@dimen/_10sdp"
+                    android:id="@+id/cvAnggota"
                     app:cardUseCompatPadding="true">
 
                     <RelativeLayout
@@ -261,11 +262,12 @@
                             android:fontFamily="@font/popsem"/>
 
                         <TextView
+                            android:id="@+id/tvTotalAnggota"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_23sdp"
                             android:layout_below="@id/tv11"
-                            android:text="1"
+
                             android:textSize="@dimen/_40sdp"/>
 
                         <ImageView

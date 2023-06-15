@@ -1,5 +1,6 @@
 package com.example.sianasapp.Util;
 
+import com.example.sianasapp.Model.AnggotaModel;
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.ResponseModel;
 import com.example.sianasapp.Model.RiwayatModel;
@@ -55,4 +56,25 @@ public interface AdminService {
     Call<List<RiwayatModel>> getAllPengajuanByStatus(
             @Query("status") String status
      );
+
+    @FormUrlEncoded
+    @POST("admin/decision")
+    Call<ResponseModel> decision(
+            @Field("id") String id,
+            @Field("konfirmasi") String konfirmasi
+    );
+    @GET("admin/getallanggota")
+    Call<List<AnggotaModel>> getAllAnggota();
+
+    @FormUrlEncoded
+    @POST("admin/insertAnggota")
+    Call<ResponseModel> insertAnggota(
+            @Field("subbag") String subbag,
+            @Field("nama") String nama,
+            @Field("nip") String nip,
+            @Field("jabatan") String jabatan,
+            @Field("no_hp") String no_hp,
+            @Field("username") String username,
+            @Field("password") String password
+    );
 }
