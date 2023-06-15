@@ -114,4 +114,10 @@ public interface AdminService {
             @Field("id") String id
     );
 
+    @FormUrlEncoded
+    @POST("admin/deleteAnggota")
+    Call<ResponseModel> deleteAnggota(
+            @Field("id") String id
+    );
+
 }

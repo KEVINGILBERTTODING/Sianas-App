@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.sianasapp.LoginActivity;
 import com.example.sianasapp.Model.AnggotaModel;
 import com.example.sianasapp.Model.ResponseModel;
+import com.example.sianasapp.Util.AdminService;
 import com.example.sianasapp.Util.AnggotaIService;
 import com.example.sianasapp.Util.Constans;
 import com.example.sianasapp.Util.DataApi;
@@ -30,6 +31,7 @@ import retrofit2.Response;
 public class AdminUpdateAnggotaFragment extends Fragment {
     SharedPreferences sharedPreferences;
     AnggotaIService anggotaIService;
+    AdminService adminService;
     private FragmentAdminUpdateAnggotaBinding binding;
     private String userId;
     private AlertDialog progressDialog;
@@ -43,6 +45,7 @@ public class AdminUpdateAnggotaFragment extends Fragment {
         binding = FragmentAdminUpdateAnggotaBinding.inflate(inflater, container, false);
         sharedPreferences = getContext().getSharedPreferences(Constans.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         userId = getArguments().getString("user_id");
+        adminService = DataApi.getClient().create(AdminService.class);
         anggotaIService = DataApi.getClient().create(AnggotaIService.class);
         editor = sharedPreferences.edit();
 
@@ -65,6 +68,13 @@ public class AdminUpdateAnggotaFragment extends Fragment {
             public void onClick(View v) {
 
                 updateProfile();
+            }
+        });
+
+        binding.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteAnggota();
             }
         });
 
@@ -138,11 +148,31 @@ public class AdminUpdateAnggotaFragment extends Fragment {
         });
     }
 
-    private void logOut() {
-        editor.clear().apply();
-        startActivity(new Intent(getContext(), LoginActivity.class));
-        getActivity().finish();
+    private void deleteAnggota() {
+        showProgressBar("Loading", "Menghapus data....", true);
+        adminService.deleteAnggota(userId).enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if (response.isSuccessful() && response.body().getCode() == 200) {
+                    showProgressBar("d", "d", false);
+                    showToast("success", "Berhasil menghapus data");
+                    getActivity().onBackPressed();
+                }else {
+                    showProgressBar("d", "d", false);
+                    showToast("err", "Gagal menghapus data");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                showProgressBar("d", "d", false);
+                showToast("err", "Tidak ada koneksi internet");
+
+            }
+        });
     }
+
+
 
     private void showProgressBar(String title, String message, boolean isLoading) {
         if (isLoading) {

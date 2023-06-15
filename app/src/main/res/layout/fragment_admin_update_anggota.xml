@@ -192,6 +192,16 @@
                         android:layout_marginTop="@dimen/_20sdp"
                         android:text="UPDATE"/>
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDelete"
+                        android:layout_width="@dimen/_280sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/popsem"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:backgroundTint="@color/red"
+                        android:text="HAPUS ANGGOTA"/>
+
 
                 </LinearLayout>
             </LinearLayout>
