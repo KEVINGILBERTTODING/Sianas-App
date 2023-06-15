@@ -13,37 +13,38 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sianasapp.FragmentAdmin.AdminUpdateAnggotaFragment;
-import com.example.sianasapp.Model.AnggotaModel;
+import com.example.sianasapp.Model.MobilModel;
+import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.R;
 
 import java.util.List;
 
-public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.ViewHolder> {
+public class SopirAdapter extends RecyclerView.Adapter<SopirAdapter.ViewHolder> {
     Context context;
-    List<AnggotaModel> anggotaModelList;
+    List<MobilModel> mobilModelList;
 
-    public AnggotaAdapter(Context context, List<AnggotaModel> anggotaModelList) {
+    public SopirAdapter(Context context, List<MobilModel> mobilModelList) {
         this.context = context;
-        this.anggotaModelList = anggotaModelList;
+        this.mobilModelList = mobilModelList;
     }
 
     @NonNull
     @Override
-    public AnggotaAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SopirAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.list_anggota, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AnggotaAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SopirAdapter.ViewHolder holder, int position) {
 
-        holder.tvSubbag.setText(anggotaModelList.get(holder.getAdapterPosition()).getSubbag());
-        holder.tvNama.setText(anggotaModelList.get(holder.getAdapterPosition()).getNama());
+        holder.tvSubbag.setText(mobilModelList.get(holder.getAdapterPosition()).getJenisMobil());
+        holder.tvNama.setText(mobilModelList.get(holder.getAdapterPosition()).getNama());
     }
 
     @Override
     public int getItemCount() {
-        return anggotaModelList.size();
+        return mobilModelList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -59,7 +60,7 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.ViewHold
         public void onClick(View v) {
             Fragment fragment = new AdminUpdateAnggotaFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("user_id", anggotaModelList.get(getAdapterPosition()).getNoAnggota());
+            bundle.putString("no_mobil", mobilModelList.get(getAdapterPosition()).getNoMobil());
             fragment.setArguments(bundle);
             ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frameAdmin, fragment).addToBackStack(null).commit();

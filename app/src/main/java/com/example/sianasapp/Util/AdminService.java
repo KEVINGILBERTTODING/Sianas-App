@@ -77,4 +77,8 @@ public interface AdminService {
             @Field("username") String username,
             @Field("password") String password
     );
+
+    @GET("admin/getAllSopir")
+    Call<List<MobilModel>> getAllSopir();
+
 }

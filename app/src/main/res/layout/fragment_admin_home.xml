@@ -284,6 +284,7 @@
                     android:layout_height="@dimen/_130sdp"
                     android:background="@color/black"
                     app:cardCornerRadius="@dimen/_15sdp"
+                    android:id="@+id/cvMenuSopir"
                     app:cardElevation="@dimen/_10sdp"
                     app:cardUseCompatPadding="true">
 
@@ -301,11 +302,11 @@
                             android:fontFamily="@font/popsem"/>
 
                         <TextView
+                            android:id="@+id/tvTotalSopir"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_23sdp"
                             android:layout_below="@id/tv13"
-                            android:text="1"
                             android:textSize="@dimen/_40sdp"/>
 
                         <ImageView

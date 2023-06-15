@@ -58,6 +58,7 @@ public class FragmentAdminHome extends Fragment {
         getMotor();
         getKonfirmasi();
         getAnggota();
+        getSopir();
         listener();
     }
 
@@ -86,6 +87,13 @@ public class FragmentAdminHome extends Fragment {
             @Override
             public void onClick(View v) {
                 replace(new AdminAnggotaFragment());
+            }
+        });
+        binding.cvMenuSopir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replace(new AdminSopirFragment());
+
             }
         });
 
@@ -136,6 +144,33 @@ public class FragmentAdminHome extends Fragment {
 
             @Override
             public void onFailure(Call<List<AnggotaModel>> call, Throwable t) {
+                showProgressBar("Sds", "dss", false);
+                binding.tvTotalAnggota.setText("0");
+
+                showToast("error", "Tidak ada koneksi internet");
+
+
+            }
+        });
+
+    }
+    private void getSopir() {
+        showProgressBar("Loading", "Memuat data...", true);
+        adminService.getAllSopir().enqueue(new Callback<List<MobilModel>>() {
+            @Override
+            public void onResponse(Call<List<MobilModel>> call, Response<List<MobilModel>> response) {
+                if (response.isSuccessful() && response.body().size() > 0) {
+                    binding.tvTotalSopir.setText(String.valueOf(response.body().size()));
+                    showProgressBar("dsd", "sd",false);
+                }else {
+                    binding.tvTotalAnggota.setText("0");
+
+                    showProgressBar("Sds", "dss", false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MobilModel>> call, Throwable t) {
                 showProgressBar("Sds", "dss", false);
                 binding.tvTotalAnggota.setText("0");
 
