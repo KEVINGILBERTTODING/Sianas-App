@@ -89,6 +89,7 @@
                     android:layout_height="@dimen/_130sdp"
                     android:background="@color/black"
                     app:cardCornerRadius="@dimen/_15sdp"
+                    android:id="@+id/cvMenuRiwayat"
                     app:cardElevation="@dimen/_10sdp"
                     app:cardUseCompatPadding="true">
 

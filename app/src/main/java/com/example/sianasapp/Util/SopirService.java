@@ -37,4 +37,11 @@ public interface SopirService {
             @Field("id") String id
 
     );
+
+    @GET("sopir/getHistory")
+    Call<List<RiwayatModel>> getHistory(
+            @Query("id") String id
+    );
+
+
 }
