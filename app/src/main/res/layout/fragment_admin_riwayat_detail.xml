@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".FragmentAnggota.AnggotaRiwayatDetailFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:text="Detail Peminjaman"
+                    android:textSize="@dimen/_20sdp"
+                    android:fontFamily="@font/popsem"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    app:contentPadding="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardBackgroundColor="@color/main"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/tvStatusSopir"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="status"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/popmed"
+                            android:textSize="@dimen/_10ssp"/>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/_14sdp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tujuan Kunjungan"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <TextView
+                        android:id="@+id/etTujuankunjungan1"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Kecamatan Surakarta"/>
+
+                    <TextView
+                        android:id="@+id/etTujuankunjungan2"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Kecamatan Surakarta"/>
+
+                    <TextView
+                        android:id="@+id/etTujuankunjungan3"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Kecamatan Surakarta"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Alamat Tujuan"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <TextView
+                        android:id="@+id/etAlamattujuan1"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Jl. Surakarta Raya no 10"/>
+
+                    <TextView
+                        android:id="@+id/etAlamattujuan2"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Jl. Surakarta Raya no 10"/>
+
+                    <TextView
+                        android:id="@+id/etAlamattujuan3"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Jl. Surakarta Raya no 10"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Kota"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+                    <TextView
+                        android:id="@+id/etKota1"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Jl. Surakarta Raya no 10"/>
+
+                    <TextView
+                        android:id="@+id/etKota2"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Jl. Surakarta Raya no 10"/>
+
+                    <TextView
+                        android:id="@+id/etKota3"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Jl. Surakarta Raya no 10"/>
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Jenis Mobil"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <TextView
+                        android:id="@+id/etJenismobil"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Kijang Inova"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="No Polisi"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <TextView
+                        android:id="@+id/etNoPolisi"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="H 0981 AB"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Nama Sopir"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <TextView
+                        android:id="@+id/etNamaSopir"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="H 0981 AB"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Tanggal Peminjaman"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <TextView
+                        android:id="@+id/etTglPeminjaman"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="10-09-2023"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Tanggal Kembali"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <TextView
+                        android:id="@+id/etTglKembali"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="10-09-2023"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Banyak Penumpang"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <TextView
+                        android:id="@+id/etBanyakPenumpang"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="10-09-2023"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Km Awal"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <TextView
+                        android:id="@+id/etKmAwal"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="10-09-2023"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Km Akhir"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
+
+
+                    <TextView
+                        android:id="@+id/etKmAkhir"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="10-09-2023"/>
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:id="@+id/btnDownloadSurat"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_height="wrap_content"
+                        android:text="Download Surat Peminjaman"
+                        app:icon="@drawable/baseline_download_24"
+                        app:backgroundTint="@color/green"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:id="@+id/btnDownloadBukti"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_height="wrap_content"
+                        android:text="Download Bukti"
+                        app:icon="@drawable/baseline_download_24"
+                        app:backgroundTint="@color/main"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>

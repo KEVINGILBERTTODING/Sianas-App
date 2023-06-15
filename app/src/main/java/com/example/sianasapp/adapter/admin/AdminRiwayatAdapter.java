@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sianasapp.FragmentAdmin.AdminRiwayatDetailFragment;
 import com.example.sianasapp.FragmentAnggota.AnggotaRiwayatDetailFragment;
 import com.example.sianasapp.Model.RiwayatModel;
 import com.example.sianasapp.R;
@@ -91,7 +92,7 @@ public class AdminRiwayatAdapter extends RecyclerView.Adapter<AdminRiwayatAdapte
 
         @Override
         public void onClick(View v) {
-            Fragment fragment = new AnggotaRiwayatDetailFragment();
+            Fragment fragment = new AdminRiwayatDetailFragment();
             Bundle bundle = new Bundle();
             bundle.putString("no_pengajuan", riwayatModelList.get(getAdapterPosition()).getNoPengajuan());
             bundle.putString("tujuan1", riwayatModelList.get(getAdapterPosition()).getTujuan1());
@@ -100,9 +101,11 @@ public class AdminRiwayatAdapter extends RecyclerView.Adapter<AdminRiwayatAdapte
             bundle.putString("alamat1", riwayatModelList.get(getAdapterPosition()).getAlamat1());
             bundle.putString("alamat2", riwayatModelList.get(getAdapterPosition()).getAlamat2());
             bundle.putString("alamat3", riwayatModelList.get(getAdapterPosition()).getAlamat3());
+            bundle.putString("bukti", riwayatModelList.get(getAdapterPosition()).getBukti());
             bundle.putString("kota1", riwayatModelList.get(getAdapterPosition()).getKota1());
             bundle.putString("kota2", riwayatModelList.get(getAdapterPosition()).getKota2());
             bundle.putString("konfirmasi", riwayatModelList.get(getAdapterPosition()).getKonfirmasi());
+            bundle.putString("konfirmasi_sopir", riwayatModelList.get(getAdapterPosition()).getKonfirmasiSopir());
             bundle.putString("kota3", riwayatModelList.get(getAdapterPosition()).getKota3());
             bundle.putString("jenis_mobil", riwayatModelList.get(getAdapterPosition()).getJenisMobil());
             bundle.putString("nopol", riwayatModelList.get(getAdapterPosition()).getNoPlat());
