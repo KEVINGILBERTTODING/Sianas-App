@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import com.example.sianasapp.R;
 import com.example.sianasapp.Util.Constans;
 import com.example.sianasapp.Util.DataApi;
 import com.example.sianasapp.Util.SopirService;
+import com.example.sianasapp.adapter.sopir.SopirHistoryAdapter;
 import com.example.sianasapp.databinding.FragmentSopirHomeBinding;
 
 import java.util.List;
@@ -51,6 +54,7 @@ public class FragmentSopirHome extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getJadwal();
+        getRiwayat();
 
         listener();
     }
@@ -95,6 +99,32 @@ public class FragmentSopirHome extends Fragment {
             }
         });
     }
+
+    private void getRiwayat() {
+        showProgressBar("Loading", "Memuat data...", true);
+        sopirService.getHistory(userId).enqueue(new Callback<List<RiwayatModel>>() {
+            @Override
+            public void onResponse(Call<List<RiwayatModel>> call, Response<List<RiwayatModel>> response) {
+                if (response.isSuccessful() && response.body().size() > 0) {
+                    binding.tvTotalRiwayat.setText(String.valueOf(response.body().size()));
+
+                    showProgressBar("dsd", "sd",false);
+                }else {
+                    showProgressBar("Sds", "dss", false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<RiwayatModel>> call, Throwable t) {
+                showProgressBar("Sds", "dss", false);
+                showToast("error", "Tidak ada koneksi internet");
+
+
+            }
+        });
+
+    }
+
 
     private void showProgressBar(String title, String message, boolean isLoading) {
         if (isLoading) {

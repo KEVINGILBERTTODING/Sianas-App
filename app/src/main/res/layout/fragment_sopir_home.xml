@@ -111,7 +111,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_23sdp"
                             android:layout_below="@id/tv3"
-                            android:text="1"
+                            android:id="@+id/tvTotalRiwayat"
                             android:textSize="@dimen/_40sdp"/>
 
                         <ImageView
