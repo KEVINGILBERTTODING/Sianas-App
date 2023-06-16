@@ -118,8 +118,6 @@ public class AdminRiwayatAdapter extends RecyclerView.Adapter<AdminRiwayatAdapte
                                 showProgressBar("Dsd", "d", false);
                                 showToast("success", "Berhasil konfirmasi pengajuan...");
                                 riwayatModelList.remove(getAdapterPosition());
-
-                                riwayatModelList.get(getAdapterPosition()).setKonfirmasi("Dikonfirmasi");
                                 notifyDataSetChanged();
                             }else {
                                 showProgressBar("sd", "Sd", false);

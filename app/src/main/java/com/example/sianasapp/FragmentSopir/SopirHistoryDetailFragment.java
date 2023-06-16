@@ -75,9 +75,6 @@ public class SopirHistoryDetailFragment extends Fragment {
         binding.tvStatusSopir.setText(getArguments().getString("konfirmasi_sopir"));
 
 
-
-
-
         return binding.getRoot();
     }
 
@@ -88,7 +85,6 @@ public class SopirHistoryDetailFragment extends Fragment {
     }
 
     private void listener() {
-
         binding.btnDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,14 +96,7 @@ public class SopirHistoryDetailFragment extends Fragment {
 
             }
         });
-
-
-
     }
-
-
-
-
 
 
 

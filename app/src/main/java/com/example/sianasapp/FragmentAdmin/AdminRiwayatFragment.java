@@ -127,12 +127,19 @@ public class AdminRiwayatFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
+                    binding.rvRiwayat.setAdapter(null);
+
                     getHistory("Menunggu");
                 }else if (tab.getPosition() == 1) {
+                    binding.rvRiwayat.setAdapter(null);
                     getHistory("Dikonfirmasi");
                 }else if (tab.getPosition() == 2) {
+                    binding.rvRiwayat.setAdapter(null);
+
                     getHistory("Ditolak");
                 }else if (tab.getPosition() == 3) {
+                    binding.rvRiwayat.setAdapter(null);
+
                     getHistory("Dicancel");
                 }
             }
