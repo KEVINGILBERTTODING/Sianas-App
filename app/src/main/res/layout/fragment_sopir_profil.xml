@@ -1,108 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentSopir.FragmentSopirProfil">
 
-    <ScrollView
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".FragmentSopir.FragmentSopirProfil">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:text="Profil"
-                android:textSize="@dimen/_20sdp"
-                android:fontFamily="@font/popsem"/>
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:padding="@dimen/_14sdp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nama"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/popmed"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:text="Profil"
+                    android:textSize="@dimen/_20sdp"
+                    android:fontFamily="@font/popsem"/>
 
-
-                <TextView
-                    android:id="@+id/etnama"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_14sdp"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_10sdp"
-                    android:textSize="@dimen/_11ssp"
-                    android:fontFamily="@font/popmed"
-                    android:background="@drawable/container_textbox"
-                    android:text="Supriyadi"/>
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Alamat"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/popmed"
-                    android:textSize="@dimen/_13ssp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jenis Mobil"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
 
 
-                <TextView
-                    android:id="@+id/etnip"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_10sdp"
-                    android:textSize="@dimen/_11ssp"
-                    android:fontFamily="@font/popmed"
-                    android:background="@drawable/container_textbox"
-                    android:text="Jl. Sukarta raya no 9"/>
+                    <TextView
+                        android:id="@+id/tvJenisMobil"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Supriyadi"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="No Telpone"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/popmed"
-                    android:textSize="@dimen/_13ssp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="No Polisi"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_13ssp"/>
 
 
-                <TextView
-                    android:id="@+id/etnotelpone"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_10sdp"
-                    android:textSize="@dimen/_11ssp"
-                    android:fontFamily="@font/popmed"
-                    android:background="@drawable/container_textbox"
-                    android:text="0895678212"/>
+                    <TextView
+                        android:id="@+id/tvNoPol"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        android:text="Jl. Sukarta raya no 9"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnupdate"
-                    android:layout_width="@dimen/_280sdp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/popsem"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:text="UPDATE PROFILE"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Nama Lengkap"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_11ssp"/>
 
+
+                    <EditText
+                        android:id="@+id/etNamaLengkap"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="No Telepon"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_11ssp"/>
+
+
+                    <EditText
+                        android:id="@+id/etNoTelp"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:inputType="number"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                       />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Username"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_11ssp"/>
+
+
+                    <EditText
+                        android:id="@+id/etUsername"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:inputType="number"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Password"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_11ssp"/>
+
+
+                    <EditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_11ssp"
+                        android:inputType="number"
+                        android:fontFamily="@font/popmed"
+                        android:background="@drawable/container_textbox"
+                        />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnupdate"
+                        android:layout_width="@dimen/_280sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/popsem"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:text="UPDATE PROFILE"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnLogOut"
+                        android:layout_width="@dimen/_280sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/popsem"
+                        app:backgroundTint="@color/red"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="LOGOUT"/>
+
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

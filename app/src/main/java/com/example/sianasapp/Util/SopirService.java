@@ -1,5 +1,6 @@
 package com.example.sianasapp.Util;
 
+import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.ResponseModel;
 import com.example.sianasapp.Model.RiwayatModel;
 
@@ -41,6 +42,21 @@ public interface SopirService {
     @GET("sopir/getHistory")
     Call<List<RiwayatModel>> getHistory(
             @Query("id") String id
+    );
+
+    @GET("sopir/getProfile")
+    Call<MobilModel> getProfile(
+            @Query("id") String id
+    );
+
+    @FormUrlEncoded
+    @POST("sopir/updateProfile")
+    Call<ResponseModel> updateProfile(
+            @Field("id") String id,
+            @Field("nama") String nama,
+            @Field("no_hp") String no_hp,
+            @Field("username") String username,
+            @Field("password") String password
     );
 
 

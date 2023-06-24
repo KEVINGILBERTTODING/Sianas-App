@@ -31,7 +31,7 @@ public class SopirMainActivity extends AppCompatActivity {
                     replace(new AdminRiwayatFragment());
                     return true;
                 }else if (item.getItemId() == R.id.menuProfile) {
-                    replace(new AdminProfilFragment());
+                    replace(new FragmentSopirProfil());
                     return true;
                 }
                 return false;
