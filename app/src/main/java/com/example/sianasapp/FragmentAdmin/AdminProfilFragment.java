@@ -57,18 +57,12 @@ public class AdminProfilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getMyProfile();
+
         listener();
     }
 
     private void listener() {
-        binding.btnupdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                updateProfile();
-            }
-        });
 
         binding.btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,65 +72,6 @@ public class AdminProfilFragment extends Fragment {
         });
     }
 
-    private void getMyProfile() {
-        showProgressBar("Loading", "Memuat data...", true);
-        adminService.getMyProfile(userId).enqueue(new Callback<AdminModel>() {
-            @Override
-            public void onResponse(Call<AdminModel> call, Response<AdminModel> response) {
-                if (response.isSuccessful() && response.body() !=null) {
-                    binding.etnama.setText(response.body().getNama());
-
-                    binding.etUsername.setText(response.body().getUsername());
-                    binding.etPassword.setText(response.body().getPassword());
-                    binding.etPassword.setText(response.body().getPassword());
-                    showProgressBar("dsd", "Ssd", false);
-                }else {
-                    showProgressBar("Sd", "ds", false);
-                    showToast("error", "Terjadi kesalahan");
-                    binding.btnupdate.setEnabled(false);
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AdminModel> call, Throwable t) {
-                showProgressBar("Sd", "ds", false);
-                showToast("error", "Tidak ada koneksi internet");
-                binding.btnupdate.setEnabled(false);
-
-            }
-        });
-    }
-
-    private void updateProfile() {
-        showProgressBar("Loading", "Mengubah profil...", true);
-        adminService.updateMyProfile(
-                userId,
-                binding.etnama.getText().toString(),
-                binding.etUsername.getText().toString(),
-                binding.etPassword.getText().toString()
-        ).enqueue(new Callback<ResponseModel>() {
-            @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                if (response.isSuccessful() && response.body().getCode() == 200) {
-                    showProgressBar("dsd", "ddss", false);
-                    showToast("success", "Berhasil mengubah profil");
-                    getMyProfile();
-                }else {
-                    showToast("error", "Gagal mengubah profil");
-                    showProgressBar("dsd", "ddss", false);
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
-                showToast("error", "Tidak ada koneksi internet");
-                showProgressBar("dsd", "ddss", false);
-
-            }
-        });
-    }
 
     private void logOut() {
         editor.clear().apply();

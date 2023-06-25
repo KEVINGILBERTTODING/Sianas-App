@@ -35,9 +35,6 @@
                     android:orientation="vertical">
 
 
-
-
-
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnLogOut"
                         android:layout_width="@dimen/_280sdp"
