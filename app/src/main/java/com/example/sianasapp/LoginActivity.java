@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.sianasapp.FragmentAdmin.AdminMainActivty;
 import com.example.sianasapp.FragmentSopir.SopirMainActivity;
@@ -51,6 +50,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
+        listener();
+
+
+    }
+
+    private void listener() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                     authInterface.login(
                             etUsername.getText().toString(),
                             etPassword.getText().toString().toString()
-                            ).enqueue(new Callback<UserModel>() {
+                    ).enqueue(new Callback<UserModel>() {
                         @Override
                         public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                             if (response.isSuccessful() && response.body().getCode() == 200) {
