@@ -2,6 +2,7 @@ package com.example.sianasapp.FragmentSopir;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.sianasapp.LoginActivity;
 import com.example.sianasapp.Model.MobilModel;
 import com.example.sianasapp.Model.ResponseModel;
 import com.example.sianasapp.Model.RiwayatModel;
@@ -68,6 +70,14 @@ public class FragmentSopirProfil extends Fragment {
                 updateProfile();
 
             }
+        });
+        binding.btnLogOut.setOnClickListener(View -> {
+            editor.clear();
+            editor.apply();
+            showToast("Berhasil", "Berhasil Logout");
+            startActivity(new Intent(getContext(), LoginActivity.class));
+            getActivity().finish();
+
         });
 
 

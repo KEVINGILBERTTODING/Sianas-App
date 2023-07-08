@@ -118,10 +118,23 @@ public class RiwayatModel implements Serializable {
 
     @SerializedName("foto")
     private String foto;
+    @SerializedName("lat_1")
+    private String lat1;
+    @SerializedName("lat_2")
+    private String lat2;
+    @SerializedName("lat_3")
+    private String lat3;
+    @SerializedName("lng_1")
+    private String lng1;
+    @SerializedName("lng_2")
+    private String lng2;
+    @SerializedName("lng_3")
+    private String lng3;
 
-    public RiwayatModel(String noPengajuan, String subbag, String noAnggota, String noMobil, String tujuan1, String tujuan2, String tujuan3, String alamat1, String alamat2, String alamat3, String kota1, String kota2, String kota3, String muatan, String tglDigunakan, String tglKembali, String tglUpload, String kmAwal, String kmAkhir, String surat, String bukti, String konfirmasi, String konfirmasiSopir, String nama, String noHp, String alamat, String username, String password, String role, String jenisMobil, String noPlat, String tglPajak, String noRangka, String noMesin, String noStnk, String warna, String status, String foto) {
+    public RiwayatModel(String noPengajuan, String noAnggota, String subbag, String noMobil, String tujuan1, String tujuan2, String tujuan3, String alamat1, String alamat2, String alamat3, String kota1, String kota2, String kota3, String muatan, String tglDigunakan, String tglKembali, String tglUpload, String kmAwal, String kmAkhir, String surat, String bukti, String konfirmasi, String konfirmasiSopir, String nama, String noHp, String alamat, String username, String password, String role, String jenisMobil, String noPlat, String tglPajak, String noRangka, String noMesin, String noStnk, String warna, String status, String foto, String lat1, String lat2, String lat3, String lng1, String lng2, String lng3) {
         this.noPengajuan = noPengajuan;
         this.noAnggota = noAnggota;
+        this.subbag = subbag;
         this.noMobil = noMobil;
         this.tujuan1 = tujuan1;
         this.tujuan2 = tujuan2;
@@ -132,7 +145,6 @@ public class RiwayatModel implements Serializable {
         this.kota1 = kota1;
         this.kota2 = kota2;
         this.kota3 = kota3;
-        this.subbag = subbag;
         this.muatan = muatan;
         this.tglDigunakan = tglDigunakan;
         this.tglKembali = tglKembali;
@@ -158,6 +170,12 @@ public class RiwayatModel implements Serializable {
         this.warna = warna;
         this.status = status;
         this.foto = foto;
+        this.lat1 = lat1;
+        this.lat2 = lat2;
+        this.lat3 = lat3;
+        this.lng1 = lng1;
+        this.lng2 = lng2;
+        this.lng3 = lng3;
     }
 
     public String getNoPengajuan() {
@@ -462,5 +480,53 @@ public class RiwayatModel implements Serializable {
 
     public void setSubbag(String subbag) {
         this.subbag = subbag;
+    }
+
+    public String getLat1() {
+        return lat1;
+    }
+
+    public void setLat1(String lat1) {
+        this.lat1 = lat1;
+    }
+
+    public String getLat2() {
+        return lat2;
+    }
+
+    public void setLat2(String lat2) {
+        this.lat2 = lat2;
+    }
+
+    public String getLat3() {
+        return lat3;
+    }
+
+    public void setLat3(String lat3) {
+        this.lat3 = lat3;
+    }
+
+    public String getLng1() {
+        return lng1;
+    }
+
+    public void setLng1(String lng1) {
+        this.lng1 = lng1;
+    }
+
+    public String getLng2() {
+        return lng2;
+    }
+
+    public void setLng2(String lng2) {
+        this.lng2 = lng2;
+    }
+
+    public String getLng3() {
+        return lng3;
+    }
+
+    public void setLng3(String lng3) {
+        this.lng3 = lng3;
     }
 }

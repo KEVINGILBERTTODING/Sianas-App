@@ -195,6 +195,12 @@ public class AdminRiwayatAdapter extends RecyclerView.Adapter<AdminRiwayatAdapte
             bundle.putString("penumpang", riwayatModelList.get(getAdapterPosition()).getMuatan());
             bundle.putString("km_awal", riwayatModelList.get(getAdapterPosition()).getKmAwal());
             bundle.putString("km_akhir", riwayatModelList.get(getAdapterPosition()).getKmAkhir());
+            bundle.putString("lat1", riwayatModelList.get(getAdapterPosition()).getLat1());
+            bundle.putString("lat2", riwayatModelList.get(getAdapterPosition()).getLat2());
+            bundle.putString("lat3", riwayatModelList.get(getAdapterPosition()).getLat3());
+            bundle.putString("lng1", riwayatModelList.get(getAdapterPosition()).getLng1());
+            bundle.putString("lng2", riwayatModelList.get(getAdapterPosition()).getLng2());
+            bundle.putString("lng3", riwayatModelList.get(getAdapterPosition()).getLng3());
             fragment.setArguments(bundle);
             ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frameAdmin, fragment).addToBackStack(null).commit();

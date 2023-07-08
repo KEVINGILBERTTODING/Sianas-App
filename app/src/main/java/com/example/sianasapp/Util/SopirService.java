@@ -60,4 +60,13 @@ public interface SopirService {
     );
 
 
+    @FormUrlEncoded
+    @POST("sopir/setLocation")
+    Call<ResponseModel> setLocation(
+        @Field("id") String id,
+        @Field("lat") String lat,
+        @Field("lng") String lng,
+        @Field("jenis") String jenis
+    );
+
 }
